@@ -46,8 +46,8 @@ class Student {
 
 	public double getAverage(ArrayList<Integer> labPoints) {
 		//TODO
-		int sum = 0;
-		int n = 0;
+		double sum = 0;
+		double n = 0;
 		for (int i = 0; i < labPoints; ++i) {
 			sum += getLabPoints();
 			n++;
@@ -66,5 +66,37 @@ class Student {
 			signature = true;
 		}
 		return signature;
+	}
+}
+
+class Course {
+	List<Student> students;
+
+	public Course(List<Student> students) {
+		this.students = students;
+	}
+
+	public void add(Student newStudent) {
+		students.add(newStudent);
+	}
+
+	public int numOfSignatures(List<Student> students) {
+		int num = 0;
+		for (Student i: students) {
+			if (i.hasSignature() == true) {
+				num++;
+			}
+		}
+		return num;
+	}
+
+	public double getAverage(List<Student> students) {
+		double sum = 0;
+		double n = 0;
+		for (Student i: students) {
+			sum += i.getLabPoints();
+			n++;
+		}
+		return (sum/n);
 	}
 }
